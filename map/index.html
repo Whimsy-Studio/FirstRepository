@@ -1,22 +1,54 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-hans">
 <head>
-  <title>地图 - Whimsy-Studio</title>
-     <meta charset="utf-8">
-   <meta name="keywords" content="在线地图,地图">
-   <meta name="description" content="自己制作地图">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建地图</title>
 </head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;margin: 0px;padding: 0px;
+    }
+    #container {
+        width: 100%;height: 100%;
+    }
+  .button1{position: absolute;
+        background: #FFF;border:none;
+        width:30px;height: 30px;padding: 0px;
+        z-index: 9999;right: 30px;bottom: 80px;
+        text-align: center;font-size:1.5em;}
+  .button2{position: absolute;
+        background: #FFF;border:none;
+        width:30px;height: 30px;padding: 0px;
+        z-index: 9999;right: 30px;bottom: 30px;
+        text-align:center;font-size:1.5em;}
+.button1:active, .button2:active{background:#ddd;}
+.info{position: absolute;
+        background: #FFF;border:none;
+        width:50vw;height: 30px;padding-top:15px;padding-left:10px;
+        z-index: 9999;left: 10px;top: 10px;
+}
+</style>
+
 <body>
-  <h1>地图</h1><hr />
-  <div>
-       <iframe width="800" height="600" frameborder="0" src="https://cn.bing.com/maps/embed?h=600&w=800&cp=nxypwfsncqry&lvl=13&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
-       </iframe>
-       <div style="white-space: nowrap; text-align: center; width: 800px; padding: 6px 0;">
-         <a id="largeMapLink" target="_blank" href="https://cn.bing.com/maps?cp=nxypwfsncqry&amp;sty=r&amp;lvl=13&amp;FORM=MBEDLD">查看地图</a>
-         &nbsp; | &nbsp; 
-         <a id="dirMapLink" target="_blank" href="https://cn.bing.com/maps/directions?cp=nxypwfsncqry&amp;sty=r&amp;lvl=13&amp;rtp=~pos.29.591307000000008_103.75633999999998____&amp;FORM=MBEDLD">获取路线</a>
-      </div>
-  </div>
-  <hr />
-  <a href="/" target="_blank">首页</a>
+    <div id="container"></div>
+    <button class="button1" onclick="map.setZoom(map.getZoom()+1)">+</button>
+    <button class="button2" onclick="map.setZoom(map.getZoom()-1)"> - </button>
+    <div class="info">
+    <a href="/" target="_blank" style="color:#0060ff">Whimsy</a> &gt; 地图 
+
+    </div>
+    <script type="text/javascript">
+            var center = new TMap.LatLng(29.583618,103.761278);
+            var map = new TMap.Map("container", {
+                zoom:4,
+                center: center,
+            });
+           map.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM);
+    </script>
 </body>
+
 </html>

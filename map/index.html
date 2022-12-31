@@ -9,7 +9,7 @@
      body { margin: 0; font: 13px/1.5 "Microsoft YaHei", "Helvetica Neue", "Sans-Serif";  }
      .my-map { margin: auto auto; width: 100vw; height: 100vh; } .my-map .icon { background: url(https://a.amap.com/lbs-dev-yuntu/static/web/image/tools/creater/marker.png) no-repeat; }
      .amap-container{height: 100%;}
-.info{position: absolute;background: #FFF;border:none;width:120px;height: 30px;padding-top:15px;padding-left:10px;z-index: 9999;right: 10px;top: 10px;
+.info{position: absolute;background: #FFF;border:none;width:120px;height: 30px;padding-top:15px;padding-left:10px;z-index: 9999;right: 10px;top: 10px;border:1px solid #0060ff;
 }
    </style>
  </head>
@@ -67,7 +67,7 @@
        });	
 console.clear();
 console.log("上一个版本的地图，用电脑打开，结果……每次显卡都崩了……\n所以这次改良了一下。");
-window.setTimeout(function(){document.getElementsByClassName("amap-locate")[0].click()},1500)
+window.setTimeout(function(){document.getElementsByClassName("amap-locate")[0].click()},3000)
      })
  	}();
    </script>

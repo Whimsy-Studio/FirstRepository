@@ -63,7 +63,7 @@
      loadFeatures();
      map.on('complete', function(){
        map.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function(){
-         map.addControl(new AMap.ToolBar({ruler: true, direction: true, locate: true})); map.addControl(new AMap.OverView({isOpen: true})); map.addControl(new AMap.Scale);
+         map.addControl(new AMap.ToolBar({ruler: true, direction: true, locate: true}));  map.addControl(new AMap.Scale);
        });	
 console.clear();
 console.log("上一个版本的地图，用电脑打开，结果……每次显卡都崩了……\n所以这次改良了一下。");

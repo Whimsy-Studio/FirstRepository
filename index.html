@@ -22,18 +22,23 @@
         padding-bottom:30px;
 		width:70%;
 		box-shadow:0px 0px 5px grey;
-		backdrop-filter:blur(10px);
-		background-color:rgba(255,255,255,0.5);
+		backdrop-filter:blur(30px);
+		background-color:rgba(255,255,255,0.3);
         border-radius:5px;
-        margin:auto;
+        margin:auto;position: absolute;
 	}
       .main p{
         color:#000
       }
+      body{
+        background-image:url('http://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images');
+        height:100vh;font-weight:100;
+        overflow:hidden;padding-top:20vh;padding-left:15vw
+      }
     </style>
   </head>
-  <body style="background-image:url('http://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images');height:100vh;font-weight:100;overflow:hidden;padding-top:20vh">
-	<div class="main">
+  <body>
+	<div class="main" id="mydiv">
     <span style="font-size:1.5em;color:#0060ff;">Welcome</span><br>
     <p>我还没有想好我要写什么啊……</p>
     <div class="btn">
@@ -49,4 +54,39 @@
 	 </p>
 	</div>
   </body>
+      <script>dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}</script>
 </html>

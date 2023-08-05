@@ -43,8 +43,11 @@
     <p  id="hitokoto"><a id="hitokoto_text" href="#" style="color:#000" target="_blank">&nbsp;</a></p>
     <div class="btn">
     <a href="map/" target="_blank">地图</a> | 
-    <a href="links/" target="_blank">链接</a> | 
-    <a href="down/" target="_blank">下载</a> | 
+    <a href="https://space.bilibili.com/3461581016926730" target="_blank">bilibili主页</a> | 
+    <a href="https://pan.huang1111.cn/s/WDqAH3" target="_blank">下载</a>
+    <br />
+    <a href="start/" target="_blank">开始菜单</a> | 
+    <a href="https://www.bilibili.com/video/BV1Mh4y1w7vs" target="_blank">宣传片</a> | 
     <a href="about/" target="_blank">关于</a>
     <br>
     </div>
@@ -55,7 +58,6 @@
 	</div>
   </body>
       <script>dragElement(document.getElementById("mydiv"));
-
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
@@ -72,7 +74,6 @@ function dragElement(elmnt) {
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
   }
-
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
@@ -83,7 +84,6 @@ function dragElement(elmnt) {
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
-
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;

@@ -5,51 +5,39 @@
     <link rel="shortcut icon" href="https://whimsy-studio.github.io/favicon.ico">
     <meta charset="utf-8">
     <title>Whimsy-Studio</title>
+    <base href="#" target="_blank" />
     <style>
-      a{
-		color:#0060ff;
-      }
-      .btn {
-		margin: auto;
-		width: 60%;
-		border: 2px solid #0060ff;
-		padding: 20px 0 20px;
-		text-align:center;
-      }
-	.main{
-		text-align:center;
-		color:#000;
-		padding-top:50px;
-        padding-bottom:30px;
-		width:70%;
-		box-shadow:0px 0px 5px grey;
-		backdrop-filter:blur(30px);
-		background-color:rgba(255,255,255,0.4);
-        margin:auto;position: absolute;
-	}
-      .main p{
-        color:#000
-      }
+      a{color:#0060ff;}
       body{
         background-image:url('http://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images');
         height:100vh;font-weight:100;
         overflow:hidden;padding-top:20vh;padding-left:15vw
       }
+      .btn {
+		margin: auto; width: 60%; padding: 20px 0 20px;
+		border: 2px solid #0060ff;
+		text-align:center;
+      }
+      .main{
+		text-align:center;color:#000;
+		padding-top:50px;padding-bottom:30px;width:70%;margin:auto;position: absolute;
+		box-shadow:0px 0px 5px grey;backdrop-filter:blur(30px);background-color:rgba(255,255,255,0.4);
+	}
+      .main p{color:#000}
+      .group{font-weight:600;}
     </style>
   </head>
   <body>
-	<div class="main" id="mydiv">
+    <div class="main" id="drag">
     <p style="font-size:1.5em;color:#0060ff;">Welcome</p>
     <p  id="hitokoto"><a id="hitokoto_text" href="#" style="color:#000" target="_blank">&nbsp;</a></p>
     <div class="btn">
-    <a href="map/" target="_blank">地图</a> | 
-    <a href="https://space.bilibili.com/3461581016926730" target="_blank">bilibili主页</a> | 
-    <a href="https://pan.huang1111.cn/s/WDqAH3" target="_blank">下载</a>
-    <br />
-    <a href="start/" target="_blank">开始菜单</a> | 
-    <a href="https://www.bilibili.com/video/BV1Mh4y1w7vs" target="_blank">宣传片</a> | 
-    <a href="about/" target="_blank">关于</a>
-    <br>
+    <span class="group">平台</span><br />
+    <a href="//space.bilibili.com/3461581016926730">bilibili主页</a>
+    <br /><span class="group">工具</span><br />
+    <a href="map/">地图</a> | <a href="start/">开始菜单</a> | <a href="//pan.huang1111.cn/s/zX3gUM">下载</a>
+    <br /><span class="group">关于</span><br />
+    <a href="https://www.bilibili.com/video/BV1Mh4y1w7vs">宣传片</a> | <a href="about/">关于</a>
     </div>
      <p style="color:#333;font-size:0.85em">
       &copy; Whimsy 2023 <br>
@@ -57,45 +45,17 @@
 	 </p>
 	</div>
   </body>
-      <script>dragElement(document.getElementById("mydiv"));
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
-</script>
+      <script>dragElement(document.getElementById("drag"));
+	function dragElement(elmnt){var pos1=0,pos2=0,pos3=0,pos4=0;if(document.getElementById(elmnt.id+"header")){document.getElementById(elmnt.id+"header").onmousedown=dragMouseDown}else{elmnt.onmousedown=dragMouseDown}
+	function dragMouseDown(e){e=e||window.event;e.preventDefault();pos3=e.clientX;pos4=e.clientY;document.onmouseup=closeDragElement;document.onmousemove=elementDrag}
+	function elementDrag(e){e=e||window.event;e.preventDefault();pos1=pos3-e.clientX;pos2=pos4-e.clientY;pos3=e.clientX;pos4=e.clientY;elmnt.style.top=(elmnt.offsetTop-pos2)+"px";elmnt.style.left=(elmnt.offsetLeft-pos1)+"px"}
+	function closeDragElement(){document.onmouseup=null;document.onmousemove=null}}
+  </script>
   <script>
   fetch('https://v1.hitokoto.cn/?c=i&encode=utf8')
     .then(response => response.json())
     .then(data => {
-      const hitokoto = document.querySelector('#hitokoto_text')
-      hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+      const hitokoto = document.querySelector('#hitokoto_text');hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
       hitokoto.innerText = data.hitokoto
     })
     .catch(console.error)

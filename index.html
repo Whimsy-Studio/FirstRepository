@@ -21,14 +21,19 @@
       .main{
 		text-align:center;color:#000;
 		padding-top:50px;padding-bottom:30px;width:70%;margin:auto;position: absolute;
-		box-shadow:0px 0px 5px grey;backdrop-filter:blur(30px);background-color:rgba(255,255,255,0.4);
+		box-shadow:0px 0px 5px #000;backdrop-filter:blur(30px);background-color:rgba(255,255,255,0.5);
 	}
       .main p{color:#000}
       .group{font-weight:600;}
+		#close:hover{
+			color:#FF0000
+		}
     </style>
   </head>
   <body>
     <div class="main" id="drag">
+		<span id="close" style="font-size:1.5em;position: absolute;
+    right: 15px;top:10px;user-select:none;" title="关闭，双击屏幕即可再次显示">×</span>
     <p style="font-size:1.5em;color:#0060ff;">Welcome</p>
     <p  id="hitokoto"><a id="hitokoto_text" href="#" style="color:#000" target="_blank">&nbsp;</a></p>
     <div class="btn">
@@ -51,6 +56,12 @@
 	function dragMouseDown(e){e=e||window.event;e.preventDefault();pos3=e.clientX;pos4=e.clientY;document.onmouseup=closeDragElement;document.onmousemove=elementDrag}
 	function elementDrag(e){e=e||window.event;e.preventDefault();pos1=pos3-e.clientX;pos2=pos4-e.clientY;pos3=e.clientX;pos4=e.clientY;elmnt.style.top=(elmnt.offsetTop-pos2)+"px";elmnt.style.left=(elmnt.offsetLeft-pos1)+"px"}
 	function closeDragElement(){document.onmouseup=null;document.onmousemove=null}}
+	document.getElementsByTagName("body")[0].ondblclick=function(){
+		document.getElementById("drag").style.display="block";
+	}
+	document.getElementById("close").onclick=function(){
+		document.getElementById("drag").style.display="none";
+	}
   </script>
   <script>
   fetch('https://v1.hitokoto.cn/?c=i&encode=utf8')
